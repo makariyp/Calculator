@@ -60,24 +60,13 @@ class Main {
         if (first<1|last<1|first>10|last>10) throw new RuntimeException();
 
 
-        int result;
-
-        switch (oper) {
-            case ('+'):
-                result = first + last;
-                break;
-            case ('-'):
-                result = first - last;
-                break;
-            case ('*'):
-                result = first * last;
-                break;
-            case ('/'):
-                result = (int) Math.floor(first / last);
-                break;
-            default:
-                throw new RuntimeException();
-        }
+        int result = switch (oper) {
+            case ('+') -> first + last;
+            case ('-') -> first - last;
+            case ('*') -> first * last;
+            case ('/') -> (int) Math.floor(first / last);
+            default -> throw new RuntimeException();
+        };
 
         if(isIntQ) return Integer.toString(result);
         else {
